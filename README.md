@@ -259,7 +259,7 @@ The exported CSV (`data/final/pairs_for_annotation_*.csv`) contains:
 - `config.py` loads secrets at runtime using `tomli` library
 - Never commit `secrets.toml` to version control
 - Get your own API keys:
-  - SerpAPI: https://serpapi.com (100 free searches/month)
+  - SerpAPI: https://serpapi.com (250 free searches/month)
   - Reddit: https://www.reddit.com/prefs/apps
 
 ### Data Privacy
