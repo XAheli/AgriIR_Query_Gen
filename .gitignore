@@ -1,0 +1,349 @@
+# ============================================
+# Agriculture Inconsistency Detection
+# .gitignore
+# ============================================
+
+# ============================================
+# SENSITIVE DATA - DO NOT COMMIT
+# ============================================
+
+# API Keys and Secrets
+secrets.toml
+.env
+*.env
+.env.local
+.env.*.local
+secrets.json
+credentials.json
+api_keys.txt
+
+# ============================================
+# VIRTUAL ENVIRONMENTS
+# ============================================
+
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.virtualenv/
+virtualenv/
+
+# Conda environments
+.conda/
+conda-env/
+
+# ============================================
+# PYTHON
+# ============================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# ============================================
+# DATA FILES (Using Git LFS)
+# ============================================
+# Note: .csv, .json, .db files are tracked with Git LFS
+# See .gitattributes for LFS configuration
+
+# Keep directory structure
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/final/.gitkeep
+
+# Temporary data files
+*.tmp
+*.temp
+*.bak
+*.backup
+*_draft*.zip
+
+# ============================================
+# LOGS
+# ============================================
+
+# Log files
+*.log
+logs/
+*.log.*
+log_*.txt
+
+# ============================================
+# IDE / EDITOR
+# ============================================
+
+# VSCode
+.vscode/
+.vscode/*
+!.vscode/settings.json.example
+!.vscode/tasks.json.example
+!.vscode/launch.json.example
+!.vscode/extensions.json.example
+*.code-workspace
+
+# PyCharm
+.idea/
+.idea/*
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Atom
+.atom/
+
+# ============================================
+# OPERATING SYSTEM
+# ============================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================
+# SCRAPING / BROWSER
+# ============================================
+
+# Selenium
+chromedriver
+geckodriver
+*.exe
+selenium-debug.log
+
+# Browser cache
+.scrapy/
+scrapy_cache/
+
+# ============================================
+# MODELS & LARGE FILES
+# ============================================
+
+# Machine learning models
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.pt
+*.pth
+*.onnx
+*.pb
+*.tflite
+models/
+checkpoints/
+*.model
+
+# Word embeddings
+*.vec
+*.bin
+*.txt.gz
+embeddings/
+
+# ============================================
+# DOCUMENTATION BUILD
+# ============================================
+
+# Sphinx documentation
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# ============================================
+# MISCELLANEOUS
+# ============================================
+
+# Compressed files (if containing sensitive data)
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+
+# Node.js (if any frontend tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# ============================================
+# PROJECT SPECIFIC
+# ============================================
+
+# Annotation working files
+*_annotated.csv
+*_in_progress.csv
+annotation_backup/
+
+# Test outputs
+test_output/
+test_results/
+
+# Cache directories
+.cache/
+cache/
+
+# ============================================
+# KEEP THESE FILES (Examples)
+# ============================================
+
+# Allow example configurations (without real keys)
+!config.example.py
+!.env.example
+!credentials.example.json
+
+# Allow documentation
+!README.md
+!SYSTEM_DESIGN.md
+!*.md
+
+# Allow requirements
+!requirements.txt
+!setup.py
+!setup.sh
+
+# Allow source code
+!*.py
+!**/*.py
