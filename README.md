@@ -1,514 +1,1011 @@
-# Agriculture Inconsistency Detection Dataset# Agriculture Inconsistency Detection Dataset# Agriculture Inconsistency Detection - Setup & Usage Guide
+# Agriculture Inconsistency Detection Pipeline# Agriculture Inconsistency Detection - Setup & Usage Guide
 
 
 
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+A comprehensive data pipeline for creating an **Indian Agriculture Inconsistency Detection Dataset** by scraping diverse sources, extracting agriculture-related statements using NLP, and generating intelligent statement pairs for manual annotation.## 📋 Project Overview
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)## 📋 Project Overview
 
 ## 📋 Project Overview
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 A comprehensive pipeline for creating an **Indian Agriculture Inconsistency Detection Dataset**. This project scrapes diverse sources, extracts agriculture-related statements using NLP, and generates intelligent statement pairs for manual annotation.
+
+**Goal**: Create 300+ annotated statement pairs to train inconsistency detection models.
 
 This project creates a dataset for detecting inconsistencies in statements about Indian agriculture. It:
 
-**Goal**: Create 300+ high-quality annotated statement pairs to train inconsistency detection models.
+**What This Pipeline Does**:
 
-## 📋 Project Overview1. **Scrapes** diverse sources (Google, articles, Reddit, social media)
+1. 🔍 **Multi-Source Scraping**: Google search results (via SerpAPI), web articles, Reddit discussions**Goal**: Create 300+ high-quality annotated statement pairs to train inconsistency detection models.
 
-### What This Does
+2. 🧠 **NLP Processing**: SpaCy-based statement extraction with opinion detection
+
+3. 🔗 **Intelligent Pairing**: Sentence Transformers for semantic similarity with stratified sampling## 📋 Project Overview
+
+4. 📊 **Export for Annotation**: CSV format with metadata for manual labeling
+
+1. **Scrapes** diverse sources (Google, articles, Reddit, social media)
+
+### Task Definition
 
 2. **Extracts** agriculture-related statements using NLP
 
-1. 🔍 **Multi-Source Scraping**: Google search (via SerpAPI), web articles, Reddit discussions
+Classify relationships between agriculture statement pairs:
 
-2. 🧠 **NLP Processing**: SpaCy-based statement extraction with opinion detectionA comprehensive pipeline for creating an **Indian Agriculture Inconsistency Detection Dataset**. This project scrapes diverse sources, extracts agriculture-related statements using NLP, and generates intelligent statement pairs for manual annotation.3. **Generates** smart statement pairs based on semantic similarity
+### What This Does
 
-3. 🔗 **Intelligent Pairing**: Sentence Transformers for semantic similarity with stratified sampling
+- **Unrelated**: Statements discuss different topics
 
-4. 📊 **Export for Annotation**: CSV format with metadata for manual labeling4. **Exports** pairs for manual annotation
+- **Consistent**: Both statements can be true, support similar conclusions1. 🔍 **Multi-Source Scraping**: Google search (via SerpAPI), web articles, Reddit discussions
+
+- **Inconsistent**: Statements contradict each other
+
+  - *Surface contradiction*: Direct logical contradiction2. 🧠 **NLP Processing**: SpaCy-based statement extraction with opinion detectionA comprehensive pipeline for creating an **Indian Agriculture Inconsistency Detection Dataset**. This project scrapes diverse sources, extracts agriculture-related statements using NLP, and generates intelligent statement pairs for manual annotation.3. **Generates** smart statement pairs based on semantic similarity
+
+  - *Factual inconsistency*: Conflicting facts/statistics
+
+  - *Value inconsistency*: Conflicting values/policy positions3. 🔗 **Intelligent Pairing**: Sentence Transformers for semantic similarity with stratified sampling
 
 
 
-### Task Definition**Goal**: Create 300+ high-quality annotated statement pairs to train inconsistency detection models.
+---4. 📊 **Export for Annotation**: CSV format with metadata for manual labeling4. **Exports** pairs for manual annotation
 
 
-
-Classify relationships between agriculture statement pairs:**Goal**: Create 200+ annotated statement pairs to train an inconsistency detection model.
-
-
-
-- **Unrelated**: Statements discuss different topics### What This Does
-
-- **Consistent**: Both statements can be true, support similar conclusions
-
-- **Inconsistent**: Statements contradict each other## 🎯 Task Definition
-
-  - *Surface contradiction*: Direct logical contradiction
-
-  - *Factual inconsistency*: Conflicting facts/statistics1. 🔍 **Multi-Source Scraping**: Google search results (SerpAPI), web articles, Reddit discussions
-
-  - *Value inconsistency*: Conflicting values/policy positions
-
-2. 🧠 **NLP Processing**: SpaCy-based statement extraction with opinion detectionClassify relationship between statement pairs as:
-
----
-
-3. 🔗 **Intelligent Pairing**: Sentence Transformers for semantic similarity, stratified sampling for diversity- **Unrelated**: Different topics
 
 ## 🚀 Quick Start
 
-4. 📊 **Export for Annotation**: CSV format with metadata for manual labeling- **Consistent**: Compatible statements
 
-### Prerequisites
 
-- **Inconsistent**: Contradictory statements
+### Prerequisites### Task Definition**Goal**: Create 300+ high-quality annotated statement pairs to train inconsistency detection models.
+
+
 
 - Python 3.11+
 
-- Virtual environment (recommended)### Task Definition  - *Surface contradiction*: Direct logical contradiction
+- Virtual environment (recommended)
 
-- Git LFS installed (for data files)
+- Git LFS installed (for data files)Classify relationships between agriculture statement pairs:**Goal**: Create 200+ annotated statement pairs to train an inconsistency detection model.
 
-  - *Factual inconsistency*: Conflicting facts/numbers
+
 
 ### 1. Clone Repository
 
-Classify relationships between agriculture statement pairs:  - *Value inconsistency*: Conflicting values/policies
 
-```bash
+
+```bash- **Unrelated**: Statements discuss different topics### What This Does
 
 git clone git@github.com:XAheli/AgriIR_Query_Gen.git
 
-cd AgriIR_Query_Gen
+cd AgriIR_Query_Gen- **Consistent**: Both statements can be true, support similar conclusions
 
-```- **Unrelated**: Statements discuss different topics## 🚀 Quick Start
+git lfs pull  # Download data files
 
-
-
-### 2. Install Dependencies- **Consistent**: Both statements can be true, support similar conclusions
+```- **Inconsistent**: Statements contradict each other## 🎯 Task Definition
 
 
 
-```bash- **Inconsistent**: Statements contradict each other### 1. Install Dependencies
+### 2. Install Dependencies  - *Surface contradiction*: Direct logical contradiction
+
+
+
+```bash  - *Factual inconsistency*: Conflicting facts/statistics1. 🔍 **Multi-Source Scraping**: Google search results (SerpAPI), web articles, Reddit discussions
 
 # Create and activate virtual environment
 
-python -m venv .venv  - *Surface contradiction*: Direct logical contradiction
+python -m venv .venv  - *Value inconsistency*: Conflicting values/policy positions
 
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
-  - *Factual inconsistency*: Conflicting facts/statistics```bash
+2. 🧠 **NLP Processing**: SpaCy-based statement extraction with opinion detectionClassify relationship between statement pairs as:
 
 # Install packages
 
-pip install -r requirements.txt  - *Value inconsistency*: Conflicting values/policy positions# Create virtual environment (recommended)
+pip install -r requirements.txt---
 
 
 
-# Download SpaCy modelpython -m venv venv
+# Download SpaCy model3. 🔗 **Intelligent Pairing**: Sentence Transformers for semantic similarity, stratified sampling for diversity- **Unrelated**: Different topics
 
 python -m spacy download en_core_web_sm
 
-```---source venv/bin/activate  # On Windows: venv\Scripts\activate
+```## 🚀 Quick Start
 
 
 
-### 3. Configure API Keys (Optional but Recommended)
+### 3. Configure API Keys (Optional but Recommended)4. 📊 **Export for Annotation**: CSV format with metadata for manual labeling- **Consistent**: Compatible statements
 
 
 
-Create `secrets.toml` with your API keys:## 🚀 Quick Start# Install requirements
+Create `secrets.toml` in the project root:### Prerequisites
 
 
 
-```tomlpip install -r requirements.txt
+```toml- **Inconsistent**: Contradictory statements
 
 [api]
 
-serp_api_key = "your_serpapi_key_here"  # Get from serpapi.com (100 free/month)### Prerequisites
+serp_api_key = "your_serpapi_key_here"  # Get from serpapi.com (100 free/month)- Python 3.11+
 
 
 
-[reddit]# Download SpaCy model
+[reddit]- Virtual environment (recommended)### Task Definition  - *Surface contradiction*: Direct logical contradiction
 
 client_id = "your_reddit_client_id"
 
-client_secret = "your_reddit_client_secret"- Python 3.11+python -m spacy download en_core_web_sm
+client_secret = "your_reddit_client_secret"- Git LFS installed (for data files)
 
 user_agent = "python:agriculture_scraper:v1.0 (by /u/YourUsername)"
 
-```- Virtual environment (recommended)```
+```  - *Factual inconsistency*: Conflicting facts/numbers
 
 
 
-**Without API keys**: Pipeline will use web scraping fallbacks (slower, less reliable).- Git LFS installed (for data files)
+**Note**: Get Reddit credentials from https://www.reddit.com/prefs/apps### 1. Clone Repository
 
 
 
-### 4. Run the Pipeline### 2. Configure (Optional)
+**Without API keys**: Pipeline will use web scraping fallbacks (slower, less reliable).Classify relationships between agriculture statement pairs:  - *Value inconsistency*: Conflicting values/policies
 
 
 
-```bash### 1. Clone Repository
+### 4. Run the Pipeline```bash
+
+
+
+```bashgit clone git@github.com:XAheli/AgriIR_Query_Gen.git
 
 source .venv/bin/activate
 
-python main_enhanced.pyEdit `config.py` to:
+python main_enhanced.pycd AgriIR_Query_Gen
 
 ```
 
-```bash- Add more agriculture queries
+```- **Unrelated**: Statements discuss different topics## 🚀 Quick Start
 
-⚠️ **Note**: The pipeline may hang at Step 6 (embedding computation) due to GPU/memory limitations. See "GPU Issue Workaround" below if this happens.
+⚠️ **Important**: The pipeline may hang at Step 6 (embedding computation) due to GPU/memory limitations on local machines. See "GPU Issue Workaround" section below.
 
-git clone git@github.com:XAheli/AgriIR_Query_Gen.git- Configure target domains
+
 
 ---
 
-cd AgriIR_Query_Gen- Set API keys (optional, for better results)
+### 2. Install Dependencies- **Consistent**: Both statements can be true, support similar conclusions
 
 ## 📂 Project Structure
 
-```
+
 
 ```
 
-agriculture_inconsistency_detection/```python
+agriculture_inconsistency_detection/```bash- **Inconsistent**: Statements contradict each other### 1. Install Dependencies
 
 ├── main_enhanced.py              # Main pipeline orchestrator
 
-├── config.py                     # Configuration (queries, parameters, loads secrets)### 2. Install Dependencies# For better Google scraping (100 free searches/month)
+├── config.py                     # Configuration (queries, parameters, loads secrets)# Create and activate virtual environment
 
-├── secrets.toml                  # API keys (DO NOT COMMIT - not in repo)
+├── secrets.toml                  # API keys (LOCAL ONLY - not in repo)
 
-├── requirements.txt              # Python dependenciesSERP_API_KEY = "your_serpapi_key"  # Get from serpapi.com
+├── requirements.txt              # Python dependenciespython -m venv .venv  - *Surface contradiction*: Direct logical contradiction
+
+├── LICENSE                       # MIT License
+
+├── README.md                     # This filesource .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 │
 
-├── scraping/                     # Data collection modules```bash
+├── scraping/                     # Data collection modules  - *Factual inconsistency*: Conflicting facts/statistics```bash
 
 │   ├── enhanced_serp_scraper.py  # Google search with SerpAPI
 
-│   ├── enhanced_content_scraper.py # Multi-strategy content extraction# Create and activate virtual environment# For Reddit scraping (optional)
+│   ├── enhanced_content_scraper.py # Multi-strategy content extraction# Install packages
 
 │   └── reddit_scraper.py         # Reddit posts & comments
 
-│python -m venv .venvREDDIT_CLIENT_ID = "your_client_id"
+│pip install -r requirements.txt  - *Value inconsistency*: Conflicting values/policy positions# Create virtual environment (recommended)
 
 ├── processing/                   # NLP processing modules
 
-│   ├── enhanced_statement_extractor.py  # SpaCy + opinion detectionsource .venv/bin/activate  # On Windows: .venv\Scripts\activateREDDIT_CLIENT_SECRET = "your_client_secret"
+│   ├── enhanced_statement_extractor.py  # SpaCy + opinion detection
 
 │   └── enhanced_pair_generator.py       # Semantic similarity pairing
 
-│# Get from: https://www.reddit.com/prefs/apps
+│# Download SpaCy modelpython -m venv venv
 
 ├── storage/                      # Database management
 
-│   └── database.py               # SQLite operations# Install packages```
+│   └── database.py               # SQLite operationspython -m spacy download en_core_web_sm
 
 │
 
-├── annotation/                   # Export utilitiespip install -r requirements.txt
+├── annotation/                   # Export utilities```---source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 │   └── export_for_annotation.py # CSV/JSON exporters
 
-│### 3. Run the Pipeline
+│
 
 └── data/                         # Generated data (tracked with Git LFS)
 
-    ├── raw/                      # Scraped content# Download SpaCy model
+    ├── raw/                      # Scraped content### 3. Configure API Keys (Optional but Recommended)
 
     │   ├── search_results.csv
 
-    │   ├── documents.jsonpython -m spacy download en_core_web_sm```bash
+    │   ├── documents.json
 
     │   └── reddit_content.json
 
-    ├── processed/                # Extracted statements```# Use enhanced pipeline (recommended)
+    ├── processed/                # Extracted statementsCreate `secrets.toml` with your API keys:## 🚀 Quick Start# Install requirements
 
     │   └── statements.json
 
-    ├── final/                    # Annotated pairspython main_enhanced.py
+    ├── final/                    # Annotated pairs
 
     │   └── pairs_for_annotation_*.csv
 
-    └── agriculture_statements.db # SQLite database### 3. Configure API Keys (Optional but Recommended)
+    └── agriculture_statements.db # SQLite database```tomlpip install -r requirements.txt
 
 ```
 
-# Or use basic pipeline
+[api]
 
 ---
 
-Create `secrets.toml` from the example:python main.py
+serp_api_key = "your_serpapi_key_here"  # Get from serpapi.com (100 free/month)### Prerequisites
 
 ## 📊 Pipeline Steps
 
-```
+
 
 The pipeline has **8 steps** divided into two parts:
 
-```bash
+[reddit]# Download SpaCy model
 
 ### Part 1: Data Collection (Steps 1-5)
 
-cp secrets.toml.example secrets.toml## 📦 What Gets Generated
+**Runs on**: Local machine  client_id = "your_reddit_client_id"
 
-**Runs on: Local machine**
+**Runtime**: 30-60 minutes
 
-```
+client_secret = "your_reddit_client_secret"- Python 3.11+python -m spacy download en_core_web_sm
 
 1. **SERP Scraping**: Query Google for agriculture-related content using 43 controversy-focused queries
 
-2. **Content Extraction**: Scrape full text from URLs using multi-strategy extractionAfter running the pipeline, you'll have:
+2. **Content Extraction**: Scrape full text from URLs using multi-strategy extractionuser_agent = "python:agriculture_scraper:v1.0 (by /u/YourUsername)"
 
 3. **Reddit Scraping**: Collect posts and comments from 10 agriculture-related subreddits
 
-4. **Statement Extraction**: Use SpaCy to extract sentences, detect opinions, filter for relevanceEdit `secrets.toml` and add your API keys:
+4. **Statement Extraction**: Use SpaCy to extract sentences, detect opinions, filter for relevance```- Virtual environment (recommended)```
 
 5. **Database Storage**: Save statements to SQLite database
 
-```
+
 
 **Expected Output**:
 
-- ~3,400+ documents scraped```tomldata/
+- ~3,400+ documents scraped**Without API keys**: Pipeline will use web scraping fallbacks (slower, less reliable).- Git LFS installed (for data files)
 
 - ~22,000+ statements extracted
 
-- ~4,400+ opinion statements (19.9%)[api]├── raw/
+- ~4,400+ opinion statements (19.9%)
 
-- Runtime: 30-60 minutes
 
-serp_api_key = "your_serpapi_key_here"  # Get from serpapi.com (100 free/month)│   ├── search_results.csv      # Google search results
 
-### Part 2: Pair Generation (Steps 6-8)
+### Part 2: Pair Generation (Steps 6-8)### 4. Run the Pipeline### 2. Configure (Optional)
 
-│   ├── documents.json          # Scraped article content
+**GPU-intensive** - May crash on local machines without sufficient GPU/memory
 
-**GPU-intensive - May crash on local machines**
 
-[reddit]│   └── reddit_content.json     # Reddit posts/comments (if enabled)
 
 6. **Embedding Computation**: Generate semantic embeddings using Sentence Transformers
 
-7. **Intelligent Pairing**: client_id = "your_reddit_client_id"├── processed/
+7. **Intelligent Pairing**: ```bash### 1. Clone Repository
 
    - Compute cosine similarity matrix
 
-   - Quality scoring (bonus for same-source, opinions)client_secret = "your_reddit_client_secret"│   └── statements.json         # Extracted statements
+   - Quality scoring (bonus for same-source, opinions)source .venv/bin/activate
 
    - Stratified sampling (50% same-source opinions, 25% same-source mixed, etc.)
 
-   - Diversity filtering (max 100 pairs per URL combo)user_agent = "python:agriculture_scraper:v1.0 (by /u/YourUsername)"├── final/
+   - Diversity filtering (max 100 pairs per URL combo)python main_enhanced.pyEdit `config.py` to:
 
 8. **Export**: Generate CSV with annotation columns
 
-```│   └── pairs_for_annotation_[timestamp].csv  # Ready for annotation
+```
 
 **Expected Output**:
 
-- 1,000+ diverse statement pairs ready for annotation└── agriculture_statements.db   # SQLite database
+- 1,000+ diverse statement pairs ready for annotation```bash- Add more agriculture queries
 
 
 
----**Without API keys**: The pipeline will still work using web scraping fallbacks (slower, less reliable).```
+---⚠️ **Note**: The pipeline may hang at Step 6 (embedding computation) due to GPU/memory limitations. See "GPU Issue Workaround" below if this happens.
 
 
 
-## 🔧 GPU Issue Workaround
+## 🔧 GPU Issue Workaroundgit clone git@github.com:XAheli/AgriIR_Query_Gen.git- Configure target domains
 
 
 
-If your computer hangs/crashes at Step 6 (embedding computation), you have two options:### 4. Run the Pipeline## 📝 Manual Annotation
+If your computer hangs/crashes at Step 6 (embedding computation), you have two options:---
 
 
 
-### Option A: Wait for Step 5 to Complete, Then Stop
+### Option A: Stop After Step 5 (Recommended for Low-End Machines)cd AgriIR_Query_Gen- Set API keys (optional, for better results)
 
 
 
-```bash#### Option A: Local Machine (Steps 1-5 only)1. **Open** the CSV file in `data/final/`
+```bash## 📂 Project Structure
 
 # Run pipeline
 
-python main_enhanced.py2. **Review** each pair and fill columns:
+python main_enhanced.py```
 
 
 
-# Wait for console message: "Step 5 completed: 22,198 statements saved to database"```bash   - `relationship_label`: Unrelated/Consistent/Inconsistent
+# Wait for console message: "Step 5 completed: 22,198 statements saved to database"```
 
 # Then press Ctrl+C to stop before Step 6
 
-```source .venv/bin/activate   - `inconsistency_subtype`: Surface/Factual/Value (if Inconsistent)
+```agriculture_inconsistency_detection/```python
 
 
 
-Your data is saved in:python main_enhanced.py   - `notes`: Any observations
+Your data is saved in:├── main_enhanced.py              # Main pipeline orchestrator
 
 - `data/processed/statements.json` (22,198 statements)
 
-- `data/agriculture_statements.db` (SQLite database)```
+- `data/agriculture_statements.db` (SQLite database)├── config.py                     # Configuration (queries, parameters, loads secrets)### 2. Install Dependencies# For better Google scraping (100 free searches/month)
 
 
 
-You can manually create pairs later or skip Steps 6-8 if you only need the statements.3. **Prioritize** pairs where `same_source = True` (self-inconsistency)
+You can manually create pairs later or use external GPU resources for Steps 6-8.├── secrets.toml                  # API keys (DO NOT COMMIT - not in repo)
 
 
 
-### Option B: Use Google Colab (Not Provided)⚠️ **Note**: Steps 6-8 (embedding computation) require GPU resources. Your local machine may hang/crash at Step 6.4. **Target** 200+ annotated pairs for quality dataset
+### Option B: Use Google Colab (For Full Pipeline)├── requirements.txt              # Python dependenciesSERP_API_KEY = "your_serpapi_key"  # Get from serpapi.com
 
 
 
-If you need the pair generation functionality, you would need to:
-
-1. Create a Jupyter notebook for Steps 6-8
-
-2. Upload `statements.json` to Google Colab#### Option B: Complete Pipeline with Google Colab (Recommended)### Annotation Guidelines
-
-3. Run embedding computation with GPU (T4 or better)
-
-4. Download generated pairs CSV
+If you need the pair generation functionality:│
 
 
 
----**Steps 1-5 (Local - Data Collection):**#### Unrelated
+1. Create a Jupyter notebook for Steps 6-8├── scraping/                     # Data collection modules```bash
+
+2. Upload `statements.json` to Google Colab
+
+3. Enable GPU: Runtime → Change runtime type → GPU (T4 or better)│   ├── enhanced_serp_scraper.py  # Google search with SerpAPI
+
+4. Run embedding computation with GPU acceleration
+
+5. Download generated pairs CSV│   ├── enhanced_content_scraper.py # Multi-strategy content extraction# Create and activate virtual environment# For Reddit scraping (optional)
 
 
 
-## 🔧 Configuration```bash- Statements discuss completely different topics
+---│   └── reddit_scraper.py         # Reddit posts & comments
 
 
 
-### Key Parameters in `config.py`source .venv/bin/activate- No logical connection
+## 🔧 Configuration│python -m venv .venvREDDIT_CLIENT_ID = "your_client_id"
 
 
 
-```pythonpython main_enhanced.py- Example: "MSP increased" vs "Cotton prices fell"
+### Key Parameters in `config.py`├── processing/                   # NLP processing modules
+
+
+
+```python│   ├── enhanced_statement_extractor.py  # SpaCy + opinion detectionsource .venv/bin/activate  # On Windows: .venv\Scripts\activateREDDIT_CLIENT_SECRET = "your_client_secret"
 
 # Queries - 43 controversy-focused queries on Indian agriculture
 
-AGRICULTURE_QUERIES = [...]  # Farm laws, MSP, subsidies, reforms, etc.# Wait for "Step 5 completed" message, then stop (Ctrl+C) if it hangs at Step 6
+AGRICULTURE_QUERIES = [...]  # Farm laws, MSP, subsidies, reforms, etc.│   └── enhanced_pair_generator.py       # Semantic similarity pairing
 
 
 
-# Similarity threshold for pairing (0-1)```#### Consistent
+# Similarity threshold for pairing (0-1)│# Get from: https://www.reddit.com/prefs/apps
 
 SIMILARITY_THRESHOLD = 0.3  # Lower = more pairs but less similar
 
-- Both can be true simultaneously
+├── storage/                      # Database management
 
 # Maximum pairs from single URL combination
 
-MAX_PAIRS_PER_SOURCE = 100  # For diversity**Steps 6-8 (Colab - Pair Generation):**- Support similar conclusions
+MAX_PAIRS_PER_SOURCE = 100  # For diversity│   └── database.py               # SQLite operations# Install packages```
 
 
 
-# Sentence Transformer model1. Upload `colab_pair_generation.ipynb` to Google Colab- Example: "Farmers need support" vs "Agricultural subsidies help farmers"
+# Sentence Transformer model│
 
-SENTENCE_TRANSFORMER_MODEL = "all-MiniLM-L12-v2"
+SENTENCE_TRANSFORMER_MODEL = "all-MiniLM-L6-v2"
 
-2. Upload `data/processed/statements.json` (generated from Steps 1-5)
+├── annotation/                   # Export utilitiespip install -r requirements.txt
 
 # Target domains - 20+ sites including government, news, agriculture portals
 
-TARGET_DOMAINS = [...]3. Enable GPU: Runtime → Change runtime type → GPU (T4)#### Inconsistent Types
+TARGET_DOMAINS = [...]│   └── export_for_annotation.py # CSV/JSON exporters
 
 ```
 
-4. Run all cells
+│### 3. Run the Pipeline
 
 ### Customization
 
-5. Download generated CSV file**Surface Contradiction**
+└── data/                         # Generated data (tracked with Git LFS)
 
-Edit `config.py` to:
+**Edit `config.py` to**:
 
-- Add/modify agriculture queries (focus on controversies for better inconsistencies)- Direct logical contradiction
+- Add/modify agriculture queries (focus on controversies)    ├── raw/                      # Scraped content# Download SpaCy model
 
 - Change target domains for different source types
 
-- Adjust similarity threshold (lower = more pairs)**Expected Time**:- Both cannot be true
+- Adjust similarity threshold (lower = more pairs)    │   ├── search_results.csv
 
 - Configure scraping parameters (delays, user agent)
 
-- Local Steps 1-5: 30-60 minutes (depends on network speed)- Example: "MSP increased by 10%" vs "MSP decreased this year"
+    │   ├── documents.jsonpython -m spacy download en_core_web_sm```bash
 
-Edit `main_enhanced.py` to:
+**Edit `main_enhanced.py` to**:
 
-- Change number of queries used (default: all 43)- Colab Steps 6-8: 5-10 minutes with GPU
+- Change number of queries used (default: all 43)    │   └── reddit_content.json
 
 - Adjust max URLs per query (default: 50)
 
-- Set target pair count (default: 1000)**Factual Inconsistency**
+- Set target pair count (default: 1000)    ├── processed/                # Extracted statements```# Use enhanced pipeline (recommended)
 
 - Enable/disable Reddit scraping (default: enabled)
 
----- Conflicting facts, numbers, or data
+    │   └── statements.json
 
 ---
 
-- Example: "1000 farmers" vs "5000 farmers" (same event)
+    ├── final/                    # Annotated pairspython main_enhanced.py
 
 ## 📝 Annotation Guide
 
-## 📂 Project Structure
+    │   └── pairs_for_annotation_*.csv
 
 ### CSV Format
 
-**Value Inconsistency**
+    └── agriculture_statements.db # SQLite database### 3. Configure API Keys (Optional but Recommended)
 
 The exported CSV (`data/final/pairs_for_annotation_*.csv`) contains:
 
-```- Conflicting values, opinions, or policy positions
+```
 
 | Column | Description |
 
-|--------|-------------|agriculture_inconsistency_detection/- Example: "Farm laws benefit farmers" vs "Farm laws harm farmers"
+|--------|-------------|# Or use basic pipeline
 
 | `id` | Unique pair identifier |
 
-| `statement_a` | First statement text |├── main_enhanced.py              # Main pipeline orchestrator
+| `statement_a` | First statement text |---
 
 | `statement_b` | Second statement text |
 
-| `similarity_score` | Semantic similarity (0-1) |├── config.py                     # Configuration (queries, parameters)## 🔧 Customization
+| `similarity_score` | Semantic similarity (0-1) |Create `secrets.toml` from the example:python main.py
 
 | `quality_score` | Quality score with bonuses |
 
-| `same_source` | Both from same URL? |├── secrets.toml                  # API keys (DO NOT COMMIT)
+| `same_source` | Both from same URL? |## 📊 Pipeline Steps
 
 | `both_have_opinions` | Both contain opinions? |
 
-| `source_a` / `source_b` | Source URLs |├── secrets.toml.example          # Template for secrets### Add More Queries
+| `source_a` / `source_b` | Source URLs |```
 
 | `domain_a` / `domain_b` | Domain names |
 
-| `author_a` / `author_b` | Authors (if available) |├── requirements.txt              # Python dependencies
+| `author_a` / `author_b` | Authors (if available) |The pipeline has **8 steps** divided into two parts:
 
 | `relationship_label` | **[TO FILL]** Unrelated/Consistent/Inconsistent |
 
-| `inconsistency_subtype` | **[TO FILL]** Surface/Factual/Value (if Inconsistent) |├── colab_pair_generation.ipynb   # Google Colab notebook for Steps 6-8Edit `config.py`:
+| `inconsistency_subtype` | **[TO FILL]** Surface/Factual/Value (if Inconsistent) |```bash
 
 | `notes` | Optional observations |
 
-│
+### Part 1: Data Collection (Steps 1-5)
 
 ### Annotation Instructions
 
-├── scraping/                     # Data collection modules```python
+cp secrets.toml.example secrets.toml## 📦 What Gets Generated
 
 1. **Prioritize**: Start with pairs where `same_source=True` and `both_have_opinions=True`
 
-2. **Label `relationship_label`**:│   ├── enhanced_serp_scraper.py  # Google search with SerpAPIAGRICULTURE_QUERIES = [
+2. **Label `relationship_label`**:**Runs on: Local machine**
 
    - `Unrelated`: Completely different topics
+
+   - `Consistent`: Can both be true```
+
+   - `Inconsistent`: Contradictory
+
+3. **If Inconsistent, label `inconsistency_subtype`**:1. **SERP Scraping**: Query Google for agriculture-related content using 43 controversy-focused queries
+
+   - `Surface`: Direct logical contradiction
+
+   - `Factual`: Conflicting facts/numbers2. **Content Extraction**: Scrape full text from URLs using multi-strategy extractionAfter running the pipeline, you'll have:
+
+   - `Value`: Conflicting opinions/values
+
+4. **Add notes**: Any observations to help with model training3. **Reddit Scraping**: Collect posts and comments from 10 agriculture-related subreddits
+
+
+
+**Target**: Annotate 300+ pairs for robust dataset.4. **Statement Extraction**: Use SpaCy to extract sentences, detect opinions, filter for relevanceEdit `secrets.toml` and add your API keys:
+
+
+
+### Annotation Examples5. **Database Storage**: Save statements to SQLite database
+
+
+
+**Inconsistent - Surface:**```
+
+- A: "Farm laws were repealed in 2021"
+
+- B: "Farm laws are still in effect"**Expected Output**:
+
+
+
+**Inconsistent - Factual:**- ~3,400+ documents scraped```tomldata/
+
+- A: "MSP increased by 10%"
+
+- B: "MSP decreased by 5%" (same year/crop)- ~22,000+ statements extracted
+
+
+
+**Inconsistent - Value:**- ~4,400+ opinion statements (19.9%)[api]├── raw/
+
+- A: "Farm laws benefit small farmers"
+
+- B: "Farm laws harm small farmers"- Runtime: 30-60 minutes
+
+
+
+**Consistent:**serp_api_key = "your_serpapi_key_here"  # Get from serpapi.com (100 free/month)│   ├── search_results.csv      # Google search results
+
+- A: "Farmers need better MSP"
+
+- B: "Agricultural support prices should increase"### Part 2: Pair Generation (Steps 6-8)
+
+
+
+---│   ├── documents.json          # Scraped article content
+
+
+
+## 🔒 Security & Privacy**GPU-intensive - May crash on local machines**
+
+
+
+### API Keys[reddit]│   └── reddit_content.json     # Reddit posts/comments (if enabled)
+
+
+
+- **secrets.toml is NOT in the repository** (protected by .gitignore)6. **Embedding Computation**: Generate semantic embeddings using Sentence Transformers
+
+- `config.py` loads secrets at runtime using `tomli` library
+
+- Never commit `secrets.toml` to version control7. **Intelligent Pairing**: client_id = "your_reddit_client_id"├── processed/
+
+- Get your own API keys:
+
+  - SerpAPI: https://serpapi.com (100 free searches/month)   - Compute cosine similarity matrix
+
+  - Reddit: https://www.reddit.com/prefs/apps
+
+   - Quality scoring (bonus for same-source, opinions)client_secret = "your_reddit_client_secret"│   └── statements.json         # Extracted statements
+
+### Data Privacy
+
+   - Stratified sampling (50% same-source opinions, 25% same-source mixed, etc.)
+
+- All scraped content is from public sources
+
+- Reddit scraping follows API terms of service   - Diversity filtering (max 100 pairs per URL combo)user_agent = "python:agriculture_scraper:v1.0 (by /u/YourUsername)"├── final/
+
+- Respects `robots.txt` and rate limits
+
+- No personal data collection8. **Export**: Generate CSV with annotation columns
+
+
+
+---```│   └── pairs_for_annotation_[timestamp].csv  # Ready for annotation
+
+
+
+## 📦 Git LFS**Expected Output**:
+
+
+
+Large data files (.csv, .json, .db) are tracked with Git LFS:- 1,000+ diverse statement pairs ready for annotation└── agriculture_statements.db   # SQLite database
+
+
+
+```bash
+
+# Already configured in .gitattributes
+
+# Files are automatically managed by Git LFS---**Without API keys**: The pipeline will still work using web scraping fallbacks (slower, less reliable).```
+
+
+
+# To download data files after cloning
+
+git lfs pull
+
+```## 🔧 GPU Issue Workaround
+
+
+
+---
+
+
+
+## 🐛 TroubleshootingIf your computer hangs/crashes at Step 6 (embedding computation), you have two options:### 4. Run the Pipeline## 📝 Manual Annotation
+
+
+
+### Import Error: tomli
+
+
+
+```bash### Option A: Wait for Step 5 to Complete, Then Stop
+
+pip install tomli==2.0.1
+
+```
+
+
+
+### SpaCy Model Not Found```bash#### Option A: Local Machine (Steps 1-5 only)1. **Open** the CSV file in `data/final/`
+
+
+
+```bash# Run pipeline
+
+python -m spacy download en_core_web_sm
+
+```python main_enhanced.py2. **Review** each pair and fill columns:
+
+
+
+### Warning: secrets.toml not found
+
+
+
+This is normal if you haven't created `secrets.toml` yet. The pipeline will work without it using web scraping fallbacks, but:# Wait for console message: "Step 5 completed: 22,198 statements saved to database"```bash   - `relationship_label`: Unrelated/Consistent/Inconsistent
+
+- Google scraping will be slower and less reliable
+
+- Reddit scraping will be disabled# Then press Ctrl+C to stop before Step 6
+
+
+
+Create `secrets.toml` with your API keys to enable full functionality.```source .venv/bin/activate   - `inconsistency_subtype`: Surface/Factual/Value (if Inconsistent)
+
+
+
+### Pipeline Hangs at Step 6
+
+
+
+**Expected behavior** - embedding computation requires significant GPU/memory. Options:Your data is saved in:python main_enhanced.py   - `notes`: Any observations
+
+1. Let Step 5 complete, then stop (Ctrl+C)
+
+2. Use a machine with better GPU/memory- `data/processed/statements.json` (22,198 statements)
+
+3. Modify code to process in smaller batches
+
+- `data/agriculture_statements.db` (SQLite database)```
+
+### No Statements Extracted
+
+
+
+**Causes**:
+
+- Scraping failed (check `data/raw/documents.json`)You can manually create pairs later or skip Steps 6-8 if you only need the statements.3. **Prioritize** pairs where `same_source = True` (self-inconsistency)
+
+- Content quality poor
+
+- Filters too strict
+
+
+
+**Solutions**:### Option B: Use Google Colab (Not Provided)⚠️ **Note**: Steps 6-8 (embedding computation) require GPU resources. Your local machine may hang/crash at Step 6.4. **Target** 200+ annotated pairs for quality dataset
+
+- Verify API keys in `secrets.toml`
+
+- Check internet connection
+
+- Lower `MIN_STATEMENT_LENGTH` in `config.py`
+
+- Add more/better queriesIf you need the pair generation functionality, you would need to:
+
+
+
+### SerpAPI Quota Exceeded1. Create a Jupyter notebook for Steps 6-8
+
+
+
+- Free tier: 100 searches/month2. Upload `statements.json` to Google Colab#### Option B: Complete Pipeline with Google Colab (Recommended)### Annotation Guidelines
+
+- Wait for quota reset or upgrade plan
+
+- Pipeline automatically falls back to web scraping3. Run embedding computation with GPU (T4 or better)
+
+
+
+---4. Download generated pairs CSV
+
+
+
+## 📈 Performance Stats (Real Run)
+
+
+
+- **Queries Used**: 43 controversy-focused queries---**Steps 1-5 (Local - Data Collection):**#### Unrelated
+
+- **URLs Found**: ~3,400+
+
+- **Documents Scraped**: 3,438 (success rate varies by source)
+
+- **Statements Extracted**: 22,198 total
+
+- **Opinion Statements**: 4,413 (19.9%)## 🔧 Configuration```bash- Statements discuss completely different topics
+
+- **Average Statements/Document**: 6.5
+
+- **Runtime**: ~60 minutes for Steps 1-5
+
+
+
+---### Key Parameters in `config.py`source .venv/bin/activate- No logical connection
+
+
+
+## 🎓 Tips for Better Results
+
+
+
+### 1. Target Controversial Topics```pythonpython main_enhanced.py- Example: "MSP increased" vs "Cotton prices fell"
+
+
+
+Focus queries on topics with multiple viewpoints:# Queries - 43 controversy-focused queries on Indian agriculture
+
+- Farm laws debate
+
+- MSP policy changesAGRICULTURE_QUERIES = [...]  # Farm laws, MSP, subsidies, reforms, etc.# Wait for "Step 5 completed" message, then stop (Ctrl+C) if it hangs at Step 6
+
+- Subsidy programs
+
+- Agricultural reforms
+
+
+
+### 2. Mix Source Types# Similarity threshold for pairing (0-1)```#### Consistent
+
+
+
+Combine:SIMILARITY_THRESHOLD = 0.3  # Lower = more pairs but less similar
+
+- Government announcements (official stance)
+
+- News articles (factual reporting)- Both can be true simultaneously
+
+- Opinion pieces (subjective views)
+
+- Social media (public opinions)# Maximum pairs from single URL combination
+
+
+
+### 3. Same-Source PairsMAX_PAIRS_PER_SOURCE = 100  # For diversity**Steps 6-8 (Colab - Pair Generation):**- Support similar conclusions
+
+
+
+Prioritize pairs from same source/author:
+
+- Better for detecting self-inconsistency
+
+- Shows evolution of positions# Sentence Transformer model1. Upload `colab_pair_generation.ipynb` to Google Colab- Example: "Farmers need support" vs "Agricultural subsidies help farmers"
+
+- More interesting contradictions
+
+SENTENCE_TRANSFORMER_MODEL = "all-MiniLM-L12-v2"
+
+### 4. Opinion Statements
+
+2. Upload `data/processed/statements.json` (generated from Steps 1-5)
+
+Look for statements with:
+
+- Modal verbs: should, must, need to# Target domains - 20+ sites including government, news, agriculture portals
+
+- Stance markers: support, oppose, believe
+
+- Value judgments: better, worse, unfairTARGET_DOMAINS = [...]3. Enable GPU: Runtime → Change runtime type → GPU (T4)#### Inconsistent Types
+
+
+
+---```
+
+
+
+## 🔍 Data Quality Checks4. Run all cells
+
+
+
+Before annotation, verify:### Customization
+
+
+
+**1. Statement Quality**5. Download generated CSV file**Surface Contradiction**
+
+- ✅ Complete sentences
+
+- ✅ Agriculture-relatedEdit `config.py` to:
+
+- ✅ Readable and clear
+
+- ❌ No promotional text- Add/modify agriculture queries (focus on controversies for better inconsistencies)- Direct logical contradiction
+
+- ❌ No navigation text
+
+- Change target domains for different source types
+
+**2. Pair Quality**
+
+- ✅ Semantically similar (overlap in topic)- Adjust similarity threshold (lower = more pairs)**Expected Time**:- Both cannot be true
+
+- ✅ Both are substantial statements
+
+- ✅ Worth comparing for consistency- Configure scraping parameters (delays, user agent)
+
+- ❌ Not identical/near-duplicate
+
+- ❌ Not completely unrelated- Local Steps 1-5: 30-60 minutes (depends on network speed)- Example: "MSP increased by 10%" vs "MSP decreased this year"
+
+
+
+---Edit `main_enhanced.py` to:
+
+
+
+## 🔗 Useful Resources- Change number of queries used (default: all 43)- Colab Steps 6-8: 5-10 minutes with GPU
+
+
+
+### APIs & Tools- Adjust max URLs per query (default: 50)
+
+- SerpAPI: https://serpapi.com (Google scraping)
+
+- Reddit API: https://www.reddit.com/prefs/apps- Set target pair count (default: 1000)**Factual Inconsistency**
+
+- SpaCy: https://spacy.io/usage/models
+
+- Enable/disable Reddit scraping (default: enabled)
+
+### Open Source Libraries
+
+- newspaper3k: Article extraction---- Conflicting facts, numbers, or data
+
+- trafilatura: Web content extraction
+
+- PRAW: Reddit API wrapper---
+
+- Sentence Transformers: Semantic embeddings
+
+- Example: "1000 farmers" vs "5000 farmers" (same event)
+
+### Agriculture Sources
+
+- PIB: https://pib.gov.in## 📝 Annotation Guide
+
+- Ministry of Agriculture: https://agricoop.nic.in
+
+- Down to Earth: https://downtoearth.org.in## 📂 Project Structure
+
+- The Hindu (Agriculture section)
+
+- Indian Express (Rural section)### CSV Format
+
+
+
+---**Value Inconsistency**
+
+
+
+## 🤝 ContributingThe exported CSV (`data/final/pairs_for_annotation_*.csv`) contains:
+
+
+
+Contributions welcome! Please:```- Conflicting values, opinions, or policy positions
+
+1. Fork the repository
+
+2. Create a feature branch| Column | Description |
+
+3. Make your changes
+
+4. Submit a pull request|--------|-------------|agriculture_inconsistency_detection/- Example: "Farm laws benefit farmers" vs "Farm laws harm farmers"
+
+
+
+---| `id` | Unique pair identifier |
+
+
+
+## 📄 License| `statement_a` | First statement text |├── main_enhanced.py              # Main pipeline orchestrator
+
+
+
+MIT License - See LICENSE file for details| `statement_b` | Second statement text |
+
+
+
+---| `similarity_score` | Semantic similarity (0-1) |├── config.py                     # Configuration (queries, parameters)## 🔧 Customization
+
+
+
+## 🙏 Acknowledgments| `quality_score` | Quality score with bonuses |
+
+
+
+- **SerpAPI** for Google search API| `same_source` | Both from same URL? |├── secrets.toml                  # API keys (DO NOT COMMIT)
+
+- **Reddit API** (PRAW) for social media data
+
+- **SpaCy** for NLP processing| `both_have_opinions` | Both contain opinions? |
+
+- **Sentence Transformers** for semantic embeddings
+
+- **Hugging Face** for transformer models| `source_a` / `source_b` | Source URLs |├── secrets.toml.example          # Template for secrets### Add More Queries
+
+
+
+---| `domain_a` / `domain_b` | Domain names |
+
+
+
+## 📧 Contact| `author_a` / `author_b` | Authors (if available) |├── requirements.txt              # Python dependencies
+
+
+
+- GitHub Issues: [Report bugs or request features](https://github.com/XAheli/AgriIR_Query_Gen/issues)| `relationship_label` | **[TO FILL]** Unrelated/Consistent/Inconsistent |
+
+- GitHub: [@XAheli](https://github.com/XAheli)
+
+| `inconsistency_subtype` | **[TO FILL]** Surface/Factual/Value (if Inconsistent) |├── colab_pair_generation.ipynb   # Google Colab notebook for Steps 6-8Edit `config.py`:
+
+---
+
+| `notes` | Optional observations |
+
+## 🗺️ Roadmap
+
+│
+
+- [ ] Add support for Twitter/X scraping
+
+- [ ] Implement automatic annotation suggestions### Annotation Instructions
+
+- [ ] Add data augmentation techniques
+
+- [ ] Create fine-tuned inconsistency detection model├── scraping/                     # Data collection modules```python
+
+- [ ] Deploy as web service API
+
+- [ ] Add multilingual support (Hindi, other Indian languages)1. **Prioritize**: Start with pairs where `same_source=True` and `both_have_opinions=True`
+
+
+
+---2. **Label `relationship_label`**:│   ├── enhanced_serp_scraper.py  # Google search with SerpAPIAGRICULTURE_QUERIES = [
+
+
+
+**Star ⭐ this repo if you find it useful!**   - `Unrelated`: Completely different topics
+
 
    - `Consistent`: Can both be true│   ├── enhanced_content_scraper.py # Multi-strategy content extraction    "your custom query 1",
 
