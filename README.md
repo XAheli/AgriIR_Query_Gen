@@ -1,3 +1,7 @@
+<!-- 
+
+
+
 # Agriculture Inconsistency Detection Pipeline
 
 A comprehensive data pipeline for creating an **Indian Agriculture Inconsistency Detection Dataset** by scraping diverse sources, extracting agriculture-related statements using NLP, and generating intelligent statement pairs for manual annotation.
@@ -282,3 +286,4 @@ Large data files (.csv, .json, .db) are tracked with Git LFS:
 git lfs pull
 ```
 
+ -->
